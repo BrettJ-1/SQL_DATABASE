@@ -4,8 +4,10 @@ USE db_zoo;
 
 CREATE TABLE tbl_animalia (
 	animalia_id INT PRIMARY KEY NOT NULL IDENTITY (1, 1),
-	animilia_type VARCHAR(30) NOT NULL
+	animalia_type VARCHAR(30) NOT NULL
 );
+
+DROP TABLE tbl_animalia
 
 INSERT INTO tbl_animalia
 	(animalia_type)
@@ -36,7 +38,7 @@ CREATE TABLE tbl_class (
 
 SELECT * FROM tbl_class;
 
-UPDATE tbl_class SET class_type = 'birds' WHERE class_type = 'bird';
+UPDATE tbl_class SET class_type = 'bird' WHERE class_type = 'birds';
 
 SELECT REPLACE(class_type, 'bird', 'birds') FROM tbl_class;
 
@@ -170,6 +172,21 @@ INSERT INTO tbl_species
 
 SELECT * FROM tbl_species;
 
+SELECT * FROM tbl_habitat;
+
+SELECT species_name FROM tbl_species
+WHERE species_order='3';
+
+SELECT nutrition_type FROM tbl_nutrition
+WHERE nutrition_cost <= '600';
+
+SELECT * 
+FROM tbl_species INNER JOIN tbl_nutrition
+ON tbl_species.species_nutrition = tbl_nutrition.nutrition_id;
+
+SELECT species_name FROM tbl_species
+WHERE species_nutrition >= 2202 and species_nutrition <= 2206;
+
 DROP TABLE tbl_species, tbl_animalia, tbl_care, tbl_class, tbl_habitat, tbl_nutrition, tbl_order, tbl_specialist;
 
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES tbl_species)
@@ -268,3 +285,4 @@ ELSE
 	ELSE 
 		PRINT '@var1 does not qualify!'
 	END
+
