@@ -194,6 +194,14 @@ INNER JOIN tbl_species
 ON tbl_care.care_specialist = tbl_species.species_id
 WHERE species_name = 'penguin';
 
+SELECT specialist_fname, specialist_lname, specialist_contact
+FROM tbl_specialist
+INNER JOIN tbl_care
+ON tbl_specialist.specialist_id = tbl_care.care_specialist
+INNER JOIN tbl_species
+ON tbl_care.care_id = tbl_species.species_care
+WHERE species_name = 'penguin';
+
 
 SELECT * FROM tbl_species
 SELECT * FROM tbl_care
