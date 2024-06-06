@@ -180,12 +180,25 @@ WHERE species_order='3';
 SELECT nutrition_type FROM tbl_nutrition
 WHERE nutrition_cost <= '600';
 
-SELECT * 
-FROM tbl_species INNER JOIN tbl_nutrition
-ON tbl_species.species_nutrition = tbl_nutrition.nutrition_id;
-
-SELECT species_name FROM tbl_species
+SELECT species_name AS 'Species Name:', nutrition_type AS 'Nutrition Type:'
+FROM tbl_species 
+INNER JOIN tbl_nutrition
+ON tbl_species.species_nutrition = tbl_nutrition.nutrition_id
 WHERE species_nutrition >= 2202 and species_nutrition <= 2206;
+
+SELECT specialist_fname, specialist_lname, specialist_contact
+FROM tbl_specialist
+INNER JOIN tbl_care
+ON tbl_specialist.specialist_id = tbl_care.care_specialist
+INNER JOIN tbl_species
+ON tbl_care.care_specialist = tbl_species.species_care;
+
+
+SELECT * FROM tbl_species
+SELECT * FROM tbl_care
+SELECT * FROM tbl_specialist
+
+
 
 DROP TABLE tbl_species, tbl_animalia, tbl_care, tbl_class, tbl_habitat, tbl_nutrition, tbl_order, tbl_specialist;
 
