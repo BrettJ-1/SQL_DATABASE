@@ -191,7 +191,8 @@ FROM tbl_specialist
 INNER JOIN tbl_care
 ON tbl_specialist.specialist_id = tbl_care.care_specialist
 INNER JOIN tbl_species
-ON tbl_care.care_specialist = tbl_species.species_care;
+ON tbl_care.care_specialist = tbl_species.species_id
+WHERE species_name = 'penguin';
 
 
 SELECT * FROM tbl_species
